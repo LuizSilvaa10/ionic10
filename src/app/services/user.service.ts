@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
 import { User } from '../Model/user';
-import { NOMEM } from 'dns';
+import { getDocs, query } from 'firebase/firestore';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,13 @@ export class UserService {
 
 
   })
+}
+async list () {
+  return collectionData(query(this.userCollection));
+  //const result = getDocs(query(this.userCollection));
+  
+
+  
   
  }
 
